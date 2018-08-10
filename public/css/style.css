@@ -1,0 +1,27 @@
+
+/*
+ Cajas de mensajes personalidados
+*/
+.clean-gray{
+border:solid 1px #DEDEDE;
+background:#EFEFEF;
+color:#222222;
+padding:6px;
+text-align:center;
+}
+
+.clean-green{
+border:solid 1px #82FD8A;
+background:#8FFF96;
+color:#222222;
+padding:12px;
+text-align:left;
+}
+
+.clean-orange{
+border:solid 1px #FFB670;
+background:#FFB66F;
+color:#222222;
+padding:4px;
+text-align:left;
+}
