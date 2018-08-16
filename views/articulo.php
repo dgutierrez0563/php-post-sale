@@ -62,11 +62,6 @@
                           
                           <form id="form_create_update" name="form_create_update" method="POST">                        
                             <!-- <div class="form-horizontal col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
-                              
-                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="codigo">Codigo</label>
-                                <input type="text" class="form-control" name="codigo" id="codigo" maxlength="20" placeholder="Codigo de articulo" required>
-                              </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="nombre">Nombre de articulo</label>
@@ -77,7 +72,7 @@
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="categoria">Categoria</label>
-                                <select class="form-control" name="id_categoria" id="id_categoria" required>
+                                <select class="form-control selectpicker" data-live-search="true" name="id_categoria" id="id_categoria" required>
                                   
                                 </select>
                                 <!-- <input type="text" class="form-control" name="id_categoria" id="id_categoria" maxlength="50" placeholder="Nombre de departamento" required> -->
@@ -85,7 +80,7 @@
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="stock">Stock</label>
-                                <input type="number" class="form-control" name="stock" id="stock" min="0" placeholder="Stock" required>
+                                <input type="number" class="form-control" name="stock" id="stock" min="1" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off placeholder="Stock">
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -109,6 +104,11 @@
                                   }
                                   */
                                 ?>
+                              </div>
+
+                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label for="codigo">Codigo</label>
+                                <input type="text" class="form-control" name="codigo" id="codigo" maxlength="30" placeholder="Codigo de barras" required>
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

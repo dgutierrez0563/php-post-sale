@@ -14,11 +14,11 @@
 	$id_user = isset($_POST["id_user"])? limpiarCadena($_POST["id_user"]):"";
 
 	switch ($_GET["action"]) {
-		case 'save_edit':
+		case 'save_edit': //caso para guardar o modificar un articulo
 			/*
 				Se realiza la validacion del archivo si ha sido seleccionado o si existe (en el if se consulta si no ha sido selected)
 			*/
-			if (!file_exists($_FILES['imagen']['temp_name']) || !is_uploaded_file($_FILES['imagen']['temp_name'])) { 
+			if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) { 
 
 				$imagen = ""; //Si o se selecciono nada, la variable imagen se setea en blanco por ser una ruta
 
@@ -32,7 +32,7 @@
 				if (($_FILES['imagen']['type'] == "image/jpg") || ($_FILES['imagen']['type'] == "image/jpeg") || ($_FILES['imagen']['type'] == "image/png")) {
 					
 					$imagen = round(microtime(true)) . '.' . end($ext); //se renombra la imagen para no tener repetidas
-					move_uploaded_file($_FILES['imagen']['temp_name'], "../files/articulos/" . $imagen); //se mueve el archivo a la ruta descrita aqui, lo que se carga la imagen a la ruta
+					move_uploaded_file($_FILES['imagen']['tmp_name'], "../files/articulos/" . $imagen); //se mueve el archivo a la ruta descrita aqui, lo que se carga la imagen a la ruta
 				}
 			}
 				if (empty($id_articulo)) {
@@ -59,7 +59,7 @@
 				echo $response="Error!\nCampos requeridos en blanco";
 			}*/
 			break;
-		case 'disable':
+		case 'disable': //caso para deshabilitar un articulo
 			$response = $articulo->disable($id_articulo);
 			echo $response ? "<div class='alert alert-info alert-dismissable'>
 								<i class='icon fa fa-check-circle'></i>Success! Articulo desactivado
@@ -68,7 +68,7 @@
 								<i class='icon fa fa-times-circle'></i>Error! No se completo el cambio
 							</div>";
 			break;
-		case 'enable':
+		case 'enable': //caso para habilitar un articulo
 			$response = $articulo->enable($id_articulo);
 			echo $response ? "<div class='alert alert-info alert-dismissable'>
 								<i class='icon fa fa-check-circle'></i>Success! Articulo activado
@@ -81,7 +81,7 @@
 			$response = $articulo->mostrar($id_articulo);
 			echo json_encode($response);
 	 		break;
-		case 'showAll':
+		case 'showAll': //caso para listar el index de todos los datos
 			$response = $articulo->showAll();
 			$data = Array();
 			$no=1;
@@ -112,6 +112,20 @@
 			);
 			echo json_encode($results);
 			break;
+
+		case 'listarCategorias': //caso para listar las caategorias del select
+
+			require_once "../models/Categoria.php";
+
+			$categoria = new Categoria();
+			$response = $categoria->listarCategorias();
+
+			while ($item = $response->fetch_object()) {
+				echo '<option value=' .$item->IDCategoria . '>' . $item->Nombre . '</option>';				
+			}
+			
+			break;
+
 		default:			
 			break;
 	}

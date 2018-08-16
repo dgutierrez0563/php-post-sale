@@ -58,5 +58,10 @@
 			$sql = "SELECT IDCategoria,Nombre,Detalle,Estado,updated_at FROM categoria";
 			return ejecutarConsulta($sql);
 		}
+
+		public function listarCategorias(){
+			$sql = "SELECT IDCategoria, Nombre FROM categoria WHERE Estado='1'";
+			return ejecutarConsulta($sql);
+		}
 	}
 ?>

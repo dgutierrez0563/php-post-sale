@@ -1,7 +1,3 @@
-/*
-	ESTE NO SE USA SE DEBE USAR EL articulo1.js
-*/
-
 
 
 var tabla;
@@ -15,18 +11,18 @@ function init(){
 	})
 }
 
-
 //Limpiar text fields
 function limpiar(){
-	$("#id_articulo").val("");
-	$("#codigo").val("");
+	$("#id_proveedor").val("");
 	$("#nombre").val("");
-	$("#id_categoria").val("");
-	$("#stock").val("");
-	$("#detalle").val("");
-	$("#imagen").val("");
+	$("#tipo_documento").val("");
+	$("#numero_documento").val("");
+	$("#direccion").val("");
+	$("#telefono").val("");
+	$("#correo").val("");
 	$("#id_user").val("");
 }
+//mostrar componentes
 function mostrarForm(flag){ //funcion del boton para llamar el modal para registrar categorias nuevas
 	limpiar();
 	if(flag){
@@ -45,7 +41,7 @@ function cancelarForm(){ //funcion de boton para llamar o regresar del modal de 
 }
 
 function showAll(){ //funcion para mostrar el listado de datos
-	tabla = $('#tb_listado_article').dataTable({
+	tabla = $('#tb_listado').dataTable({
 		"aProcessing": true, //se activa el prossesing data de datatables
 		"aServerSide": true, //paginacion y filtrado realizado por el servidor
 		//"bFilter": true,
@@ -58,7 +54,7 @@ function showAll(){ //funcion para mostrar el listado de datos
 		],
 		
 		"ajax": {
-			url: '../ajax/articulo.php?action=showAll',
+			url: '../ajax/proveedor.php?action=showAll',
 			type: "get",
 			dataType: "json",
 			error: function(e){
@@ -72,14 +68,13 @@ function showAll(){ //funcion para mostrar el listado de datos
 	}).DataTable();
 }
 
-
 function save_edit(e){ //funcion para guardary editar los datos
 	e.preventDefault();  //no se activara la accion predeterminada del evento
 	$("#btn_save").prop("disabled",true); // evento que deshabilita el boton una vez que se presiona guardar
 	var formData = new FormData($("#form_create_update")[0]); //todos los datos del formulario se envian a formData
 
 	$.ajax({
-		url: "../ajax/articulo.php?action=save_edit", //url donde voy a enviar los data
+		url: "../ajax/proveedor.php?action=save_edit", //url donde voy a enviar los data
 		type: "POST",
 		data: formData, //en data paso todos los datos mediante la variable formData (que captura todos los datos del formulario)
 		contentType: false,
@@ -97,27 +92,27 @@ function save_edit(e){ //funcion para guardary editar los datos
 	limpiar(); //luego de los procesos de guardar o editar limpio todos los campos del formulario y sus id
 }
 
-function mostrar(id_articulo){
-	$.post("../ajax/articulo.php?action=mostrar",{id_articulo : id_articulo}, function(data,status){
+function mostrar(id_proveedor){
+	$.post("../ajax/proveedor.php?action=mostrar",{id_proveedor : id_proveedor}, function(data,status){
 
 		data = JSON.parse(data);
 		mostrarForm(true); //se visualiza el formulario de regitro para ver os datos
-		
-		$("#codigo").val(data.Codigo);
+
 		$("#nombre").val(data.Nombre);
-		$("#id_categoria").val(data.IDCategoria);
-		$("#stock").val(data.Stock);
-		$("#detalle").val(data.Detalle);
-		//$("#imagen").val(data.Imagen);
+		$("#tipo_documento").val(data.TipoDocumento);
+		$("#numero_documento").val(data.NumeroDocumento);
+		$("#direccion").val(data.Direccion);
+		$("#telefono").val(data.Telefono);
+		$("#correo").val(data.Correo);
 		$("#id_user").val(data.updated_by);
-		$("#id_articulo").val(data.IDArticulo);
+		$("#id_proveedor").val(data.IDProveedor);
 	}) 	
 }
 
-function disable(id_articulo){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el articulo?</div>", function(result){
+function disable(id_proveedor){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el proveedor?</div>", function(result){
 		if (result) {
-			$.post("../ajax/articulo.php?action=disable",{id_articulo : id_articulo}, function(e){
+			$.post("../ajax/proveedor.php?action=disable",{id_proveedor : id_proveedor}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})
@@ -125,17 +120,15 @@ function disable(id_articulo){
 	})
 }
 
-function enable(id_articulo){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el articulo?</div>", function(result){
+function enable(id_proveedor){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el proveedor?</div>", function(result){
 		if (result) {
-			$.post("../ajax/articulo.php?action=enable",{id_articulo : id_articulo}, function(e){
+			$.post("../ajax/proveedor.php?action=enable",{id_proveedor : id_proveedor}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})
 		}
 	})
 }
-
-
 
 init();

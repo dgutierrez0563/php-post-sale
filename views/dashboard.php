@@ -14,7 +14,7 @@
                           <li class="breadcrumb-item">
                               <strong><a href="dashboard.php"><span class="fa fa-home"> </span> Dashboard</a></strong>
                           </li>
-                          <li class="breadcrumb-item active"><strong> Departamentos</li></strong>
+                          <li class="breadcrumb-item active"><strong> Welcome</li></strong>
                         </ol>
                         <button class="btn btn-success pull-right" onclick="//mostrarForm(true)">
                           <i class="fa fa-plus-circle"></i>  Agregar</button>

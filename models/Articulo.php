@@ -19,7 +19,7 @@
 		}
 
 		public function create($codigo,$nombre,$id_categoria,$stock,$detalle,$imagen,$id_user){
-			$sql = "INSERT INTO articulo (Codigo,Nombre,IDCategoria,Stock,Detalle,Imagen,created_by,updated_by) VALUES('$codigo','$nombre','$id_categoria','$stock','$detalle','$id_user','$id_user')";
+			$sql = "INSERT INTO articulo (Codigo,Nombre,IDCategoria,Stock,Detalle,Imagen,created_by,updated_by) VALUES('$codigo','$nombre','$id_categoria','$stock','$detalle','$imagen','$id_user','$id_user')";
 			return ejecutarConsulta($sql);
 		}
 
@@ -45,11 +45,6 @@
 
 		public function showAll(){
 			$sql = "SELECT a.IDArticulo,a.Codigo,a.Nombre,a.Stock,a.Detalle,a.Imagen,a.Estado,a.updated_at,c.IDCategoria,c.Nombre AS NombreCategoria FROM articulo a INNER JOIN categoria c ON a.IDCategoria=c.IDCategoria";
-			return ejecutarConsulta($sql);
-		}
-
-		public function listarCategorias(){
-			$sql = "SELECT IDCategoria, Nombre, Estado FROM categoria WHERE Estado=1";
 			return ejecutarConsulta($sql);
 		}
 

@@ -7,6 +7,14 @@ function init(){
 	$("#form_create_update").on("submit", function(e){ //se activa al momento de ejecutarse el eveno submit
 		save_edit(e); //se envia la informacion que esta en variable 'e' a la funcion save_edit para almacenar los datos
 	})
+
+	/*
+		Se envia a cargar apenas se inicia el modal de registro, el listado de categorias para el select de forma manual
+	*/
+	$.post("../ajax/articulo.php?action=listarCategorias", function(r) { //el parametro 'r' son las opcioes que nos esta devolviendo la funcion ajax de articulo.php
+		$("#id_categoria").html(r);
+		$("#id_categoria").selectpicker('refresh');
+	})
 }
 
 
@@ -127,5 +135,34 @@ function enable(id_articulo){
 		}
 	})
 }
+
+/*
+	Solucion para validar el input de stock al recibir un valor
+*/
+const campoNumerico = document.getElementById('stock');
+
+campoNumerico.addEventListener('keydown', function(evento) {
+  const teclaPresionada = evento.key;
+  const teclaPresionadaEsUnNumero =
+    Number.isInteger(parseInt(teclaPresionada));
+
+  const sePresionoUnaTeclaNoAdmitida = 
+    teclaPresionada != 'ArrowDown' &&
+    teclaPresionada != 'ArrowUp' &&
+    teclaPresionada != 'ArrowLeft' &&
+    teclaPresionada != 'ArrowRight' &&
+    teclaPresionada != 'Backspace' &&
+    teclaPresionada != 'Delete' &&
+    teclaPresionada != 'Enter' &&
+    !teclaPresionadaEsUnNumero;
+  const comienzaPorCero = 
+    campoNumerico.value.length === 0 &&
+    teclaPresionada == 0;
+
+  if (sePresionoUnaTeclaNoAdmitida || comienzaPorCero) {
+    evento.preventDefault(); 
+  }
+
+});
 
 init();

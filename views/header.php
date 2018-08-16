@@ -54,13 +54,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="" class="user-image" alt="Image">
                   <span class="hidden-xs">dgutierrez</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="" class="img-circle" alt="User Image">
                     <p>
                       Developer web
                       <small>www.youtube.com/dgutierrez06</small>
@@ -96,17 +96,31 @@
             </li>            
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>Almacén</span>
+                <i class="fa fa-home"></i>
+                <span>Almacen</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="./articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
                 <li><a href="./categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
-                <li><a href="./inventario.php"><i class="fa fa-circle-o"></i> Inventario</a></li>
+                <li><a href="./proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="./inventario.php"><i class="fa fa-circle-o"></i> Stock</a></li>
               </ul>
             </li>
             
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>Panel Administrativo</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="./departamento.php"><i class="fa fa-circle-o"></i> Departamentos</a></li>
+                <li><a href="./puesto.php"><i class="fa fa-circle-o"></i> Puestos</a></li>
+                <li><a href="./usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+              </ul>
+            </li>
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
@@ -131,7 +145,7 @@
             </li>                       
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-lock"></i> <span>Seguridad</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">

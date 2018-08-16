@@ -61,8 +61,8 @@
 					'2'=>(($item->Stock) >= 25) ? '<div>'. $item->Stock  : '<span class="label bg-red">'. $item->Stock .'</span></div>',
 					'3'=>($item->Estado) ? '<div class="center"><span class="label bg-green">Enabled</span>' : '<span class="label bg-orange">Disabled</span></div>',
 					'4'=>($item->Estado) ? 
-						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDArticulo.')"><i class="fa fa-pencil"></i></button>' : 
-						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDArticulo.')"><i class="fa fa-pencil"></i></button>'
+						'<button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="right" title="Editar" onclick="mostrar('.$item->IDArticulo.')"><i class="fa fa-edit"></i></button>' : 
+						'<button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="right" title="Editar" onclick="mostrar('.$item->IDArticulo.')"><i class="fa fa-edit"></i></button>'
 				);
 				$no++;
 			}

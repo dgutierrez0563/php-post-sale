@@ -47,5 +47,10 @@
 			$sql = "SELECT * FROM departamento";
 			return ejecutarConsulta($sql);
 		}
+
+		public function listarDepartamentos(){
+			$sql = "SELECT IDDepartamento, Nombre FROM departamento WHERE Estado='1'";
+			return ejecutarConsulta($sql);
+		}
 	}
 ?>

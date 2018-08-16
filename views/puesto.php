@@ -1,6 +1,6 @@
 
 <?php
-require 'header.php';
+  require 'header.php';
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -16,7 +16,7 @@ require 'header.php';
                           <li class="breadcrumb-item">
                               <strong><a href="#"><span class="fa fa-home"> </span> Dashboard</a></strong>
                           </li>
-                          <li class="breadcrumb-item active"><strong> Proveedor</li></strong>
+                          <li class="breadcrumb-item active"><strong> Puestos</li></strong>
                         </ol>
                         <button class="btn btn-success pull-right" onclick="mostrarForm(true)">
                           <i class="fa fa-plus-circle"></i>  Agregar</button>
@@ -30,71 +30,42 @@ require 'header.php';
                       <table id="tb_listado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>Nombre</th>
-                          <th>Tipo Documento</th>
-                          <th>Numero Documento</th>
-                          <th>Direccion</th>
-                          <th>Telefono</th>
-                          <th>Correo</th>
+                          <th>Departamento</th>
                           <th>Estado</th>
-                          <th>Updated</th>                          
+                          <th>Updated</th>
                           <th>Accion</th>
                         </thead>
-                        <tbody>
+                        <tbody>                          
                         </tbody>
                         <tfoot>
                           <th>Nombre</th>
-                          <th>Tipo Documento</th>
-                          <th>Numero Documento</th>
-                          <th>Direccion</th>
-                          <th>Telefono</th>
-                          <th>Correo</th>
+                          <th>Departamento</th>
                           <th>Estado</th>
-                          <th>Updated</th>                          
+                          <th>Updated</th>
                           <th>Accion</th>
                         </tfoot>
                       </table>
                     </div>
-                    <div class="panel-body" style="height: 500px;" id="form_registros">
+                    <div class="panel-body" style="height: 450px;" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
                           <strong><i class="fa fa-edit"></i> Agregar Articulo</strong>
                         </div>
                         <div class="panel-body">
+                          
                           <form id="form_create_update" name="form_create_update" method="POST">
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="nombre">Nombre del Proveedor</label>
-                                <input type="text" name="id_proveedor" id="id_proveedor" style="display: none;">
-                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="70" placeholder="Nombre de proveedor" required>
+                                <label for="nombre">Nombre del Puesto</label>
+                                <input type="text" name="id_puesto" id="id_puesto" style="display: none;">
+                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre del puesto" required>
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="tipo_documento">Tipo de Documento</label>
-                                <select class="form-control" name="tipo_documento" id="tipo_documento" placeholder="Tipo de Documento" required>
-                                  <option value="1">Cedula Fisica</option>
-                                  <option value="2">Cedula Juridica</option>
-                                  <option value="3">Pasaporte</option>
+                                <label for="id_departamento">Departamento</label>
+                                <select class="form-control selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>
+                                  
                                 </select>
-                              </div>
-
-                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="numero_documento">Numero de Documento</label>
-                                <input type="text" class="form-control" name="numero_documento" id="numero_documento" maxlength="30" placeholder="Numero de Documento" required>
-                              </div>
-
-                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="telefono">Telefono</label>
-                                <input type="text" class="form-control" name="telefono" id="telefono" maxlength="20" placeholder="Nombre de departamento" required>
-                              </div>
-
-                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="correo">Correo</label>
-                                <input type="text" class="form-control" name="correo" id="correo" maxlength="40" placeholder="Detalle importante" required>
-                              </div>
-
-                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="direccion">Direccion</label>
-                                <input type="text" class="form-control" name="direccion" id="direccion" maxlength="50" placeholder="Direccion" required>
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -102,16 +73,15 @@ require 'header.php';
                                 <input type="text" class="form-control" name="id_user" id="id_user">
                               </div>
 
+                              <br>
                               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <br>
                                 <button class="btn btn-primary" type="submit" id="btn_save"><i class="fa fa-save"></i> Guardar</button>
                                 <button class="btn btn-warning" type="button" onclick="cancelarForm()"><i class="fa fa-arrow-left"></i> Cancelar</button>
                               </div>
-                            
+                            <!-- </div> -->
                           </form>
                         </div>
-                      </div>
-                      
+                      </div>                      
                     </div>
                     <!--Fin centro -->
                   </div><!-- /.box -->
@@ -124,4 +94,4 @@ require 'header.php';
 <?php
 require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/proveedor.js"></script>
+<script type="text/javascript" src="scripts/puesto.js"></script>
