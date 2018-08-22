@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>IFactura | dgutierrez</title>
+    <title>IPOST | dgutierrez</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -35,9 +35,9 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>I</b>Factura</span>
+          <!-- <span class="logo-mini">IPOST</span> -->
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>IFactura</b></span>
+          <span class="logo-lg"><b>IPOST</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -90,7 +90,7 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
             <li>
-              <a href="#">
+              <a href="./dashboard.php">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
             </li>            
@@ -151,7 +151,7 @@
               <ul class="treeview-menu">
                 <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
-                
+                <li><a href="role.php"><i class="fa fa-circle-o"></i> Roles</a></li>
               </ul>
             </li>
             <li class="treeview">

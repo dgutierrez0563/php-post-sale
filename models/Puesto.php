@@ -30,7 +30,7 @@
 		}
 
 		public function disable($id_puesto/*,$id_user*/){
-			$sql = "UPDATE puesto SET Estado='0' WHERE IDDepartamento='$id_puesto'";
+			$sql = "UPDATE puesto SET Estado='0' WHERE IDPuesto='$id_puesto'";
 			return ejecutarConsulta($sql);
 		}
 
@@ -46,6 +46,11 @@
 
 		public function showAll(){
 			$sql = "SELECT p.IDPuesto,p.Nombre,p.IDDepartamento,p.Estado,p.updated_at,d.IDDepartamento,d.Nombre AS NombreDepartamento FROM puesto p INNER JOIN departamento d ON p.IDDepartamento=d.IDDepartamento";
+			return ejecutarConsulta($sql);
+		}
+
+		public function listarPuestos(){
+			$sql = "SELECT IDPuesto,Nombre FROM puesto ORDER BY Nombre";
 			return ejecutarConsulta($sql);
 		}
 	}

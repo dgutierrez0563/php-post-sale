@@ -9,17 +9,28 @@ function init(){
 	$("#form_create_update").on("submit", function(e){ //se activa al momento de ejecutarse el eveno submit
 		save_edit(e); //se envia la informacion que esta en variable 'e' a la funcion save_edit para almacenar los datos
 	})
+	$.post("../ajax/usuario.php?action=listarPuestos", function(r) { //el parametro 'r' son las opcioes que nos esta devolviendo la funcion ajax de articulo.php
+		$("#id_puesto").html(r);
+		$("#id_puesto").selectpicker('refresh');
+	})
+	$.post("../ajax/usuario.php?action=listarRoles", function(r2) { //el parametro 'r' son las opcioes que nos esta devolviendo la funcion ajax de articulo.php
+		$("#id_role").html(r2);
+		$("#id_role").selectpicker('refresh');
+	})
 }
 
 //Limpiar text fields
 function limpiar(){
-	$("#id_proveedor").val("");
+	$("#id_usuario").val("");
 	$("#nombre").val("");
 	$("#tipo_documento").val("");
 	$("#numero_documento").val("");
 	$("#direccion").val("");
 	$("#telefono").val("");
 	$("#correo").val("");
+	$("#id_puesto").val("");
+	$("#id_role").val("");
+	$("#nombre_usuario").val("");
 	$("#id_user").val("");
 }
 //mostrar componentes
@@ -54,7 +65,7 @@ function showAll(){ //funcion para mostrar el listado de datos
 		],
 		
 		"ajax": {
-			url: '../ajax/proveedor.php?action=showAll',
+			url: '../ajax/usuario.php?action=showAll',
 			type: "get",
 			dataType: "json",
 			error: function(e){
@@ -74,7 +85,7 @@ function save_edit(e){ //funcion para guardary editar los datos
 	var formData = new FormData($("#form_create_update")[0]); //todos los datos del formulario se envian a formData
 
 	$.ajax({
-		url: "../ajax/proveedor.php?action=save_edit", //url donde voy a enviar los data
+		url: "../ajax/usuario.php?action=save_edit", //url donde voy a enviar los data
 		type: "POST",
 		data: formData, //en data paso todos los datos mediante la variable formData (que captura todos los datos del formulario)
 		contentType: false,
@@ -92,8 +103,8 @@ function save_edit(e){ //funcion para guardary editar los datos
 	limpiar(); //luego de los procesos de guardar o editar limpio todos los campos del formulario y sus id
 }
 
-function mostrar(id_proveedor){
-	$.post("../ajax/proveedor.php?action=mostrar",{id_proveedor : id_proveedor}, function(data,status){
+function mostrar(id_usuario){
+	$.post("../ajax/usuario.php?action=mostrar",{id_usuario : id_usuario}, function(data,status){
 
 		data = JSON.parse(data);
 		mostrarForm(true); //se visualiza el formulario de regitro para ver os datos
@@ -118,15 +129,18 @@ function mostrar(id_proveedor){
 		$("#direccion").val(data.Direccion);
 		$("#telefono").val(data.Telefono);
 		$("#correo").val(data.Correo);
+		$("#id_puesto").val(data.NombrePuesto);
+		$("#id_role").val(data.NombreRole);
+		$("#nombre_usuario").val(data.NombreUsuario);
 		$("#id_user").val(data.updated_by);
-		$("#id_proveedor").val(data.IDProveedor);
+		$("#id_usuario").val(data.IDUsuario);
 	}) 	
 }
 
-function disable(id_proveedor){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el proveedor?</div>", function(result){
+function disable(id_usuario){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el usuario?</div>", function(result){
 		if (result) {
-			$.post("../ajax/proveedor.php?action=disable",{id_proveedor : id_proveedor}, function(e){
+			$.post("../ajax/usuario.php?action=disable",{id_usuario : id_usuario}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})
@@ -134,10 +148,10 @@ function disable(id_proveedor){
 	})
 }
 
-function enable(id_proveedor){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el proveedor?</div>", function(result){
+function enable(id_usuario){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el usuario?</div>", function(result){
 		if (result) {
-			$.post("../ajax/proveedor.php?action=enable",{id_proveedor : id_proveedor}, function(e){
+			$.post("../ajax/usuario.php?action=enable",{id_usuario : id_usuario}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})

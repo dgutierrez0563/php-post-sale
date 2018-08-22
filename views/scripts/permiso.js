@@ -1,5 +1,4 @@
 
-
 var tabla;
 
 function init(){
@@ -13,13 +12,9 @@ function init(){
 
 //Limpiar text fields
 function limpiar(){
-	$("#id_proveedor").val("");
+	$("#id_permiso").val("");
 	$("#nombre").val("");
-	$("#tipo_documento").val("");
-	$("#numero_documento").val("");
-	$("#direccion").val("");
-	$("#telefono").val("");
-	$("#correo").val("");
+	$("#detalle").val("");
 	$("#id_user").val("");
 }
 //mostrar componentes
@@ -54,7 +49,7 @@ function showAll(){ //funcion para mostrar el listado de datos
 		],
 		
 		"ajax": {
-			url: '../ajax/proveedor.php?action=showAll',
+			url: '../ajax/permiso.php?action=showAll',
 			type: "get",
 			dataType: "json",
 			error: function(e){
@@ -74,7 +69,7 @@ function save_edit(e){ //funcion para guardary editar los datos
 	var formData = new FormData($("#form_create_update")[0]); //todos los datos del formulario se envian a formData
 
 	$.ajax({
-		url: "../ajax/proveedor.php?action=save_edit", //url donde voy a enviar los data
+		url: "../ajax/permiso.php?action=save_edit", //url donde voy a enviar los data
 		type: "POST",
 		data: formData, //en data paso todos los datos mediante la variable formData (que captura todos los datos del formulario)
 		contentType: false,
@@ -92,41 +87,23 @@ function save_edit(e){ //funcion para guardary editar los datos
 	limpiar(); //luego de los procesos de guardar o editar limpio todos los campos del formulario y sus id
 }
 
-function mostrar(id_proveedor){
-	$.post("../ajax/proveedor.php?action=mostrar",{id_proveedor : id_proveedor}, function(data,status){
+function mostrar(id_permiso){
+	$.post("../ajax/permiso.php?action=mostrar",{id_permiso : id_permiso}, function(data,status){
 
 		data = JSON.parse(data);
 		mostrarForm(true); //se visualiza el formulario de regitro para ver os datos
 
 		$("#nombre").val(data.Nombre);
-		$("#tipo_documento").val(data.TipoDocumento);
-
-		/*aux = data.TipoDocumento;
-
-		if (aux=="Cedula Fisica") {
-			$("#tipo_documento").val(aux);
-		}
-		if (aux=="Cedula Juridica") {
-			$("#tipo_documento").val(aux);
-		}
-		if (aux=="Pasaporte") {
-			$("#tipo_documento").val(aux);
-		}
-		*/
-		$("#numero_documento").val(data.NumeroDocumento);
-
-		$("#direccion").val(data.Direccion);
-		$("#telefono").val(data.Telefono);
-		$("#correo").val(data.Correo);
+		$("#detalle").val(data.Detalle);
 		$("#id_user").val(data.updated_by);
-		$("#id_proveedor").val(data.IDProveedor);
+		$("#id_permiso").val(data.IDRole);
 	}) 	
 }
 
-function disable(id_proveedor){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el proveedor?</div>", function(result){
+function disable(id_permiso){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el acceso?</div>", function(result){
 		if (result) {
-			$.post("../ajax/proveedor.php?action=disable",{id_proveedor : id_proveedor}, function(e){
+			$.post("../ajax/permiso.php?action=disable",{id_permiso : id_permiso}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})
@@ -134,10 +111,10 @@ function disable(id_proveedor){
 	})
 }
 
-function enable(id_proveedor){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el proveedor?</div>", function(result){
+function enable(id_permiso){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el acceso?</div>", function(result){
 		if (result) {
-			$.post("../ajax/proveedor.php?action=enable",{id_proveedor : id_proveedor}, function(e){
+			$.post("../ajax/permiso.php?action=enable",{id_permiso : id_permiso}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})

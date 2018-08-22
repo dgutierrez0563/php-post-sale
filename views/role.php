@@ -16,10 +16,10 @@
                           <li class="breadcrumb-item">
                               <strong><a href="dashboard.php"><span class="fa fa-home"> </span> Dashboard</a></strong>
                           </li>
-                          <li class="breadcrumb-item active"><strong> Puestos</li></strong>
+                          <li class="breadcrumb-item active"><strong> Roles</li></strong>
                         </ol>
                         <button class="btn btn-success pull-right" onclick="mostrarForm(true)">
-                          <i class="fa fa-plus-circle"></i>  Agregar</button>
+                          <i class="fa fa-plus-circle"></i>  Agregar Role</button>
                       </div>
                     </div>
 
@@ -30,8 +30,8 @@
                       <table id="tb_listado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>Nombre</th>
-                          <th>Departamento</th>
                           <th>Estado</th>
+                          <th>Updated by</th>
                           <th>Updated</th>
                           <th>Accion</th>
                         </thead>
@@ -39,8 +39,8 @@
                         </tbody>
                         <tfoot>
                           <th>Nombre</th>
-                          <th>Departamento</th>
                           <th>Estado</th>
+                          <th>Updated by</th>
                           <th>Updated</th>
                           <th>Accion</th>
                         </tfoot>
@@ -49,23 +49,16 @@
                     <div class="panel-body" style="height: 330px;" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
-                          <strong><i class="fa fa-edit"></i> Agregar Puesto</strong>
+                          <strong><i class="fa fa-edit"></i> Agregar Role</strong>
                         </div>
                         <div class="panel-body">
                           
                           <form id="form_create_update" name="form_create_update" method="POST">
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="nombre">Nombre del Puesto</label>
-                                <input type="text" name="id_puesto" id="id_puesto" style="display: none;">
-                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre del puesto" required>
-                              </div>
-
-                              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="id_departamento">Departamento</label>
-                                <select class="form-control selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>
-                                  
-                                </select>
+                                <label for="nombre">Nombre del Role</label>
+                                <input type="text" name="id_role" id="id_role" style="display: none;">
+                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre del rol" required>
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -94,4 +87,4 @@
 <?php
 require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/puesto.js"></script>
+<script type="text/javascript" src="scripts/role.js"></script>

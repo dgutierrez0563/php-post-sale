@@ -13,7 +13,7 @@ require 'header.php';
                       <div class="form-horizontal">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item">
-                              <strong><a href="#"><span class="fa fa-home"> </span> Dashboard</a></strong>
+                              <strong><a href="dashboard.php"><span class="fa fa-home"> </span> Dashboard</a></strong>
                           </li>
                           <li class="breadcrumb-item active"><strong> Departamentos</li></strong>
                         </ol>
