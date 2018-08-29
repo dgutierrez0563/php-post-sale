@@ -1,14 +1,13 @@
 
 <?php  
 	
-	require_once "../models/Proveedor.php";
+	require_once "../models/Cliente.php";
 
-	$proveedor = new Proveedor();
+	$cliente = new Cliente();
 
-	$id_proveedor = isset($_POST["id_proveedor"])? limpiarCadena($_POST["id_proveedor"]):"";
+	$id_cliente = isset($_POST["id_cliente"])? limpiarCadena($_POST["id_cliente"]):"";
 	$nombre = isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 	$tipo_aux = isset($_POST["tipo_documento"])? limpiarCadena($_POST["tipo_documento"]):"";
-
 	$numero_documento = isset($_POST["numero_documento"])? limpiarCadena($_POST["numero_documento"]):"";
 	$direccion = isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
 	$telefono = isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
@@ -21,26 +20,11 @@
 
 			if (($tipo_aux == "Cedula Fisica") || ($tipo_aux == "Cedula Juridica") || ($tipo_aux == "Pasaporte")) {
 				
-				/*if($tipo_aux=="1"){ 
-					$tipo_documento="Cedula Fisica"; 
-				} elseif($tipo_aux=="2"){ 
-					$tipo_documento="Cedula Juridica"; 
-				} elseif($tipo_aux=="3"){ 
-					$tipo_documento="Pasaporte"; 
-				}*/
 				$tipo_documento = $tipo_aux;
 
-			//if (empty($id_categoria) && !empty($nombre) && !empty($detalle) && !empty($id_user)) {
-				if (empty($id_proveedor)) {
+				if (empty($id_cliente)) {
 
-					// if($tipo_aux="1"){ 
-					// 	$tipo_documento="Cedula Fisica"; 
-					// } elseif($tipo_aux="2"){ 
-					// 	$tipo_documento="Cedula Juridica"; 
-					// } elseif($tipo_aux="3"){ 
-					// 	$tipo_documento="Pasaporte"; 
-					// }
-						$response = $proveedor->create($nombre,$tipo_documento,$numero_documento,$direccion,$telefono,$correo,$id_user);
+						$response = $cliente->create($nombre,$tipo_documento,$numero_documento,$telefono,$correo,$direccion,$id_user);
 						echo $response ? "<div class='alert alert-info alert-dismissable'>
 											<i class='icon fa fa-check-circle'></i>Success! Datos registrados satisfactoriamente
 										</div>" : 
@@ -50,7 +34,7 @@
 
 				}else{
 
-					$response = $proveedor->edit($id_proveedor,$nombre,$tipo_documento,$numero_documento,$direccion,$telefono,$correo,$id_user);
+					$response = $cliente->edit($id_cliente,$nombre,$tipo_documento,$numero_documento,$telefono,$correo,$direccion,$id_user);
 					echo $response ? "<div class='alert alert-info alert-dismissable'>
 										<i class='icon fa fa-check-circle'></i>Success! Los datos han sido actualizados
 									</div>" : 
@@ -67,9 +51,9 @@
 			break;
 
 		case 'disable':
-			$response = $proveedor->disable($id_proveedor);
+			$response = $cliente->disable($id_cliente);
 			echo $response ? "<div class='alert alert-info alert-dismissable'>
-								<i class='icon fa fa-check-circle'></i>Success! Proveedor desactivado
+								<i class='icon fa fa-check-circle'></i>Success! Cliente desactivado
 							</div>" : 
 							"<div class='alert alert-warning alert-dismissable'>
 								<i class='icon fa fa-times-circle'></i>Error! No se completo el cambio
@@ -77,9 +61,9 @@
 			break;
 
 		case 'enable':
-			$response = $proveedor->enable($id_proveedor);
+			$response = $cliente->enable($id_cliente);
 			echo $response ? "<div class='alert alert-info alert-dismissable'>
-								<i class='icon fa fa-check-circle'></i>Success! Proveedor activado
+								<i class='icon fa fa-check-circle'></i>Success! Cliente activado
 							</div>" : 
 							"<div class='alert alert-warning alert-dismissable'>
 								<i class='icon fa fa-times-circle'></i>Error! No se completo el cambio
@@ -87,12 +71,12 @@
 			break;
 
 		case 'mostrar':
-			$response = $proveedor->mostrar($id_proveedor);
+			$response = $cliente->mostrar($id_cliente);
 			echo json_encode($response);
 	 		break;
 
 		case 'showAll':
-			$response = $proveedor->showAll();
+			$response = $cliente->showAll();
 			$data = Array();
 			$no=1;
 			while ($item=$response->fetch_object()) {
@@ -100,16 +84,15 @@
 					'0'=>$item->Nombre,
 					'1'=>$item->TipoDocumento,
 					'2'=>$item->NumeroDocumento,
-					'3'=>$item->Direccion,
-					'4'=>$item->Telefono,
-					'5'=>$item->Correo,
-					//'1'=>$item->Detalle,
-					'6'=>($item->Estado) ? '<div class="center"><span class="label bg-green">Enabled</span>' : '<span class="label bg-orange">Disabled</span></div>',//$item->Estado,
+					'3'=>$item->Telefono,
+					'4'=>$item->Correo,
+					'5'=>$item->Direccion,
+					'6'=>($item->Estado) ? '<div class="center"><span class="label bg-green">Enabled</span>' : '<span class="label bg-orange">Disabled</span></div>',
 					'7'=>$item->updated_at,
 					'8'=>($item->Estado) ? 
-						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDProveedor.')"><i class="fa fa-pencil"></i></button>' . ' <button class="btn btn-warning btn-xs" onclick="disable('.$item->IDProveedor.')"><i class="fa fa-power-off"></i>
+						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDCliente.')"><i class="fa fa-pencil"></i></button>' . ' <button class="btn btn-warning btn-xs" onclick="disable('.$item->IDCliente.')"><i class="fa fa-power-off"></i>
 						</button>' : 
-						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDProveedor.')"><i class="fa fa-pencil"></i></button>' . ' <button class="btn btn-success btn-xs" onclick="enable('.$item->IDProveedor.')"><i class="fa fa-power-off"></i>
+						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDCliente.')"><i class="fa fa-pencil"></i></button>' . ' <button class="btn btn-success btn-xs" onclick="enable('.$item->IDCliente.')"><i class="fa fa-power-off"></i>
 						</button>'
 				);
 				$no++;

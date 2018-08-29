@@ -18,7 +18,7 @@
                           </li>
                           <li class="breadcrumb-item active"><strong> Roles</li></strong>
                         </ol>
-                        <button class="btn btn-success pull-right" onclick="mostrarForm(true)">
+                        <button id="btn_agregar" class="btn btn-success pull-right" onclick="mostrarForm(true)">
                           <i class="fa fa-plus-circle"></i>  Agregar Role</button>
                       </div>
                     </div>
@@ -26,7 +26,6 @@
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listado_registros">
-                      <br><br>
                       <table id="tb_listado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>Nombre</th>

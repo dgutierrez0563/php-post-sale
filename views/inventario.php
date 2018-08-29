@@ -25,7 +25,6 @@ require 'header.php';
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listado_registros">
-                      <br><br>
                       <table id="tb_listado_inventario" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>Codigo</th>

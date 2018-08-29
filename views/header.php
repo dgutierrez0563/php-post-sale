@@ -33,7 +33,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <!-- <span class="logo-mini">IPOST</span> -->
           <!-- logo for regular state and mobile devices -->
@@ -116,6 +116,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="./departamento.php"><i class="fa fa-circle-o"></i> Departamentos</a></li>
+                <li><a href="./cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
                 <li><a href="./puesto.php"><i class="fa fa-circle-o"></i> Puestos</a></li>
                 <li><a href="./usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
               </ul>

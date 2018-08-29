@@ -20,8 +20,8 @@
 			*/
 			if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) { 
 
-				$imagen = ""; //Si o se selecciono nada, la variable imagen se setea en blanco por ser una ruta
-
+				//$imagen = ""; //Si o se selecciono nada, la variable imagen se setea en blanco por ser una ruta
+				$imagen = $_POST["imagen_actual"];
 			}else{
 				
 				//Se guarda el tipo de extension del archivo, en este caso una imagen

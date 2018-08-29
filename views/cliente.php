@@ -1,6 +1,5 @@
-
 <?php
-require 'header.php';
+  require 'header.php';
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -16,39 +15,39 @@ require 'header.php';
                           <li class="breadcrumb-item">
                               <strong><a href="dashboard.php"><span class="fa fa-home"> </span> Dashboard</a></strong>
                           </li>
-                          <li class="breadcrumb-item active"><strong> Proveedor</li></strong>
+                          <li class="breadcrumb-item active"><strong> Clientes</li></strong>
                         </ol>
                         <button id="btn_agregar" class="btn btn-success pull-right" onclick="mostrarForm(true)">
-                          <i class="fa fa-plus-circle"></i>  Agregar Proveedor</button>
+                          <i class="fa fa-plus-circle"></i>  Agregar Cliente</button>
                       </div>
                     </div>
 
                     <!-- /.box-header -->
                     <!-- centro -->
-                    <div class="panel-body table-responsive" id="listado_registros">
+                    <div class="panel-body table-responsive" id="listado_registros">                      
                       <table id="tb_listado" class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                           <th>Nombre</th>
+                          <th>Identificacion</th>
                           <th>Tipo Documento</th>
-                          <th>Numero Documento</th>
-                          <th>Direccion</th>
                           <th>Telefono</th>
                           <th>Correo</th>
+                          <th>Direccion</th>
                           <th>Estado</th>
-                          <th>Updated</th>                          
+                          <th>Updated</th>
                           <th>Accion</th>
                         </thead>
-                        <tbody>
+                        <tbody>                          
                         </tbody>
                         <tfoot>
                           <th>Nombre</th>
+                          <th>Identificacion</th>
                           <th>Tipo Documento</th>
-                          <th>Numero Documento</th>
-                          <th>Direccion</th>
                           <th>Telefono</th>
                           <th>Correo</th>
+                          <th>Direccion</th>
                           <th>Estado</th>
-                          <th>Updated</th>                          
+                          <th>Updated</th>
                           <th>Accion</th>
                         </tfoot>
                       </table>
@@ -56,15 +55,16 @@ require 'header.php';
                     <div class="panel-body" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
-                          <strong><i class="fa fa-edit"></i> Agregar Proveedor</strong>
+                          <strong><i class="fa fa-edit"></i> Agregar Cliente</strong>
                         </div>
                         <div class="panel-body">
+                          
                           <form id="form_create_update" name="form_create_update" method="POST">
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="nombre">Nombre del Proveedor</label>
-                                <input type="text" name="id_proveedor" id="id_proveedor" style="display: none;">
-                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="70" placeholder="Nombre de proveedor" required>
+                                <label for="nombre">Nombre del Cliente</label>
+                                <input type="text" name="id_cliente" id="id_cliente" style="display: none;">
+                                <input type="text" class="form-control" name="nombre" id="nombre" maxlength="70" placeholder="Nombre del cliente" required>
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -88,7 +88,7 @@ require 'header.php';
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="correo">Correo</label>
-                                <input type="text" class="form-control" name="correo" id="correo" maxlength="40" placeholder="Detalle importante" required>
+                                <input type="text" class="form-control" name="correo" id="correo" maxlength="40" placeholder="Correo" required>
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -101,16 +101,15 @@ require 'header.php';
                                 <input type="text" class="form-control" name="id_user" id="id_user">
                               </div>
 
+                              <br>
                               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <br>
                                 <button class="btn btn-primary" type="submit" id="btn_save"><i class="fa fa-save"></i> Guardar</button>
                                 <button class="btn btn-warning" type="button" onclick="cancelarForm()"><i class="fa fa-arrow-left"></i> Cancelar</button>
                               </div>
-                            
+                            <!-- </div> -->
                           </form>
                         </div>
                       </div>
-                      
                     </div>
                     <!--Fin centro -->
                   </div><!-- /.box -->
@@ -123,4 +122,4 @@ require 'header.php';
 <?php
 require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/proveedor.js"></script>
+<script type="text/javascript" src="scripts/cliente.js"></script>

@@ -1,8 +1,3 @@
-/*
-	ESTE NO SE USA SE DEBE USAR EL articulo1.js
-*/
-
-
 
 var tabla;
 
@@ -15,27 +10,29 @@ function init(){
 	})
 }
 
-
 //Limpiar text fields
 function limpiar(){
-	$("#id_articulo").val("");
-	$("#codigo").val("");
+	$("#id_cliente").val("");
 	$("#nombre").val("");
-	$("#id_categoria").val("");
-	$("#stock").val("");
-	$("#detalle").val("");
-	$("#imagen").val("");
+	$("#tipo_documento").val("");
+	$("#numero_documento").val("");
+	$("#telefono").val("");
+	$("#correo").val("");
+	$("#direccion").val("");
 	$("#id_user").val("");
 }
+//mostrar componentes
 function mostrarForm(flag){ //funcion del boton para llamar el modal para registrar categorias nuevas
 	limpiar();
 	if(flag){
 		$("#listado_registros").hide(); //oculta la tabla del listado de datos
 		$("#form_registros").show(); //muetra el formulario de registro
 		$("#btn_save").prop("disabled",false); //oculta o deshabilita el boton de agregar que aparece en el listado tabla
+		$("#btn_agregar").hide();
 	}else{
 		$("#listado_registros").show(); //sino muestra la tabla de listado de categorias
 		$("#form_registros").hide(); //oculta el formulario de registro de categorias
+		$("#btn_agregar").show();
 	}
 }
 
@@ -45,7 +42,7 @@ function cancelarForm(){ //funcion de boton para llamar o regresar del modal de 
 }
 
 function showAll(){ //funcion para mostrar el listado de datos
-	tabla = $('#tb_listado_article').dataTable({
+	tabla = $('#tb_listado').dataTable({
 		"aProcessing": true, //se activa el prossesing data de datatables
 		"aServerSide": true, //paginacion y filtrado realizado por el servidor
 		//"bFilter": true,
@@ -58,7 +55,7 @@ function showAll(){ //funcion para mostrar el listado de datos
 		],
 		
 		"ajax": {
-			url: '../ajax/articulo.php?action=showAll',
+			url: '../ajax/cliente.php?action=showAll',
 			type: "get",
 			dataType: "json",
 			error: function(e){
@@ -72,14 +69,13 @@ function showAll(){ //funcion para mostrar el listado de datos
 	}).DataTable();
 }
 
-
 function save_edit(e){ //funcion para guardary editar los datos
 	e.preventDefault();  //no se activara la accion predeterminada del evento
 	$("#btn_save").prop("disabled",true); // evento que deshabilita el boton una vez que se presiona guardar
 	var formData = new FormData($("#form_create_update")[0]); //todos los datos del formulario se envian a formData
 
 	$.ajax({
-		url: "../ajax/articulo.php?action=save_edit", //url donde voy a enviar los data
+		url: "../ajax/cliente.php?action=save_edit", //url donde voy a enviar los data
 		type: "POST",
 		data: formData, //en data paso todos los datos mediante la variable formData (que captura todos los datos del formulario)
 		contentType: false,
@@ -97,28 +93,28 @@ function save_edit(e){ //funcion para guardary editar los datos
 	limpiar(); //luego de los procesos de guardar o editar limpio todos los campos del formulario y sus id
 }
 
-function mostrar(id_articulo){
-	$.post("../ajax/articulo.php?action=mostrar",{id_articulo : id_articulo}, function(data,status){
+function mostrar(id_cliente){
+	$.post("../ajax/cliente.php?action=mostrar",{id_cliente : id_cliente}, function(data,status){
 
 		data = JSON.parse(data);
 		mostrarForm(true); //se visualiza el formulario de regitro para ver os datos
-		
-		$("#codigo").val(data.Codigo);
+
 		$("#nombre").val(data.Nombre);
-		$("#id_categoria").val(data.IDCategoria);
-		#('#id_categoria').selectpicker('refresh');
-		$("#stock").val(data.Stock);
-		$("#detalle").val(data.Detalle);
-		//$("#imagen").val(data.Imagen);
+		$("#tipo_documento").val(data.TipoDocumento);
+		$("#tipo_documento").selectpicker('refresh');
+		$("#numero_documento").val(data.NumeroDocumento);
+		$("#telefono").val(data.Telefono);
+		$("#correo").val(data.Correo);
+		$("#direccion").val(data.Direccion);
 		$("#id_user").val(data.updated_by);
-		$("#id_articulo").val(data.IDArticulo);
+		$("#id_cliente").val(data.IDProveedor);
 	}) 	
 }
 
-function disable(id_articulo){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el articulo?</div>", function(result){
+function disable(id_cliente){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea desactivar el cliente?</div>", function(result){
 		if (result) {
-			$.post("../ajax/articulo.php?action=disable",{id_articulo : id_articulo}, function(e){
+			$.post("../ajax/cliente.php?action=disable",{id_cliente : id_cliente}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})
@@ -126,17 +122,15 @@ function disable(id_articulo){
 	})
 }
 
-function enable(id_articulo){
-	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el articulo?</div>", function(result){
+function enable(id_cliente){
+	bootbox.confirm("<div class='alert alert-warning alert-dismissable'>¿Desea activar el cliente?</div>", function(result){
 		if (result) {
-			$.post("../ajax/articulo.php?action=enable",{id_articulo : id_articulo}, function(e){
+			$.post("../ajax/cliente.php?action=enable",{id_cliente : id_cliente}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			})
 		}
 	})
 }
-
-
 
 init();

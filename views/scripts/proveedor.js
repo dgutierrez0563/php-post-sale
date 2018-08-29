@@ -29,9 +29,11 @@ function mostrarForm(flag){ //funcion del boton para llamar el modal para regist
 		$("#listado_registros").hide(); //oculta la tabla del listado de datos
 		$("#form_registros").show(); //muetra el formulario de registro
 		$("#btn_save").prop("disabled",false); //oculta o deshabilita el boton de agregar que aparece en el listado tabla
+		$("#btn_agregar").hide();
 	}else{
 		$("#listado_registros").show(); //sino muestra la tabla de listado de categorias
 		$("#form_registros").hide(); //oculta el formulario de registro de categorias
+		$("#btn_agregar").show();
 	}
 }
 
@@ -100,21 +102,8 @@ function mostrar(id_proveedor){
 
 		$("#nombre").val(data.Nombre);
 		$("#tipo_documento").val(data.TipoDocumento);
-
-		/*aux = data.TipoDocumento;
-
-		if (aux=="Cedula Fisica") {
-			$("#tipo_documento").val(aux);
-		}
-		if (aux=="Cedula Juridica") {
-			$("#tipo_documento").val(aux);
-		}
-		if (aux=="Pasaporte") {
-			$("#tipo_documento").val(aux);
-		}
-		*/
+		$("#tipo_documento").selectpicker('refresh');
 		$("#numero_documento").val(data.NumeroDocumento);
-
 		$("#direccion").val(data.Direccion);
 		$("#telefono").val(data.Telefono);
 		$("#correo").val(data.Correo);

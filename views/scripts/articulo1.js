@@ -6,15 +6,19 @@ function init(){
 
 	$("#form_create_update").on("submit", function(e){ //se activa al momento de ejecutarse el eveno submit
 		save_edit(e); //se envia la informacion que esta en variable 'e' a la funcion save_edit para almacenar los datos
-	})
+	});
 
 	/*
 		Se envia a cargar apenas se inicia el modal de registro, el listado de categorias para el select de forma manual
 	*/
 	$.post("../ajax/articulo.php?action=listarCategorias", function(r) { //el parametro 'r' son las opcioes que nos esta devolviendo la funcion ajax de articulo.php
 		$("#id_categoria").html(r);
-		$("#id_categoria").selectpicker('refresh');
-	})
+		$('#id_categoria').selectpicker('refresh'); //Esto es para obligar a refrescar el IDCategoria para que salga al inicio la lista de categorias
+	});
+
+	$("#imagen_auxiliar").hide();
+
+
 }
 
 
@@ -26,6 +30,9 @@ function limpiar(){
 	$("#id_categoria").val("");
 	$("#stock").val("");
 	$("#detalle").val("");
+	$("#imagen_actual").val("");
+	$("#imagen_auxiliar").attr("src","");
+	$("#id_print").hide();
 	$("#id_user").val("");
 }
 function mostrarForm_article(flag){ //funcion del boton para llamar el modal para registrar categorias nuevas
@@ -34,9 +41,11 @@ function mostrarForm_article(flag){ //funcion del boton para llamar el modal par
 		$("#listado_registros").hide(); //oculta la tabla del listado de datos
 		$("#form_registros").show(); //muetra el formulario de registro
 		$("#btn_save").prop("disabled",false); //oculta o deshabilita el boton de agregar que aparece en el listado tabla
+		$("#btn_agregar").hide();
 	}else{
 		$("#listado_registros").show(); //sino muestra la tabla de listado de categorias
 		$("#form_registros").hide(); //oculta el formulario de registro de categorias
+		$("#btn_agregar").show();
 	}
 }
 
@@ -103,14 +112,21 @@ function mostrar(id_articulo){
 
 		data = JSON.parse(data);
 		mostrarForm_article(true); //se visualiza el formulario de regitro para ver os datos
-		
+
+		$("#id_categoria").val(data.IDCategoria);
+		$('#id_categoria').selectpicker('refresh'); //Esto es para luego de seleeccionar el IDCategoria refresco para que salga seleccionada
 		$("#codigo").val(data.Codigo);
 		$("#nombre").val(data.Nombre);
-		$("#id_categoria").val(data.IDCategoria);
 		$("#stock").val(data.Stock);
 		$("#detalle").val(data.Detalle);
+		$("#imagen_auxiliar").show(); //Imagen auxiliar
+		$("#imagen_auxiliar").attr("src","../files/articulos/"+data.Imagen); //Se muestra la iagen auxiliar en el formulario
+		$("#imagen_actual").val(data.Imagen); //Llamamos a la ruta de la imagen actual, esto para tenerlo en el fichero y el ID, asi que
+											//cuando guardemos o modifiquemos y no cambiamos la imagen, se mantiene la ruta de la imagen
+											//sin ser tocada o modificada en la DB
 		$("#id_user").val(data.updated_by);
 		$("#id_articulo").val(data.IDArticulo);
+		getBarCode();
 	}) 	
 }
 
@@ -164,5 +180,20 @@ campoNumerico.addEventListener('keydown', function(evento) {
   }
 
 });
+
+//Funciona para generar el codigo de barras para los productos
+function getBarCode(){
+	
+	codigo = $("#codigo").val();
+	JsBarcode("#bar_code", codigo);
+	$("#id_print").show();
+
+}
+
+//Funcion para imprimir con la libreria js printArea
+function printCode(){
+
+	$("#id_print").printArea();
+}
 
 init();

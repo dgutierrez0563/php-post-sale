@@ -44,7 +44,16 @@
 		}
 
 		public function showAll(){
-			$sql = "SELECT * FROM proveedor";
+			//$sql = "SELECT p.IDProveedor,p.Nombre,p.TipoDocumento,p.NumeroDocumento,p.Direccion,p.Telefono,p.Correo,p.Estado,p.updated_by,p.updated_at,
+			//u.IDUsuario,u.NombreUsuario FROM proveedor p INNER JOIN usuario u ON p.updated_by=u.IDUsuario";
+			$sql = "SELECT IDProveedor,Nombre,TipoDocumento,NumeroDocumento,Direccion,Telefono,Correo,Estado,updated_at FROM proveedor";
+			return ejecutarConsulta($sql);
+		}
+
+		public function detailItem($id_proveedor){
+			$sql = "SELECT p.IDProveedor,p.Nombre,p.TipoDocumento,p.NumeroDocumento,p.Direccion,p.Telefono,
+			p.Correo,p.Estado,p.updated_by,p.updated_at,u.IDUsuario,u.NombreUsuario 
+			FROM proveedor p INNER JOIN usuario u ON p.updated_by=u.IDUsuario";
 			return ejecutarConsulta($sql);
 		}
 	}

@@ -23,9 +23,11 @@ function mostrarFormCategoriaRegistro(flag){ //funcion del boton para llamar el 
 		$("#listado_registros_categoria").hide(); //oculta la tabla del listado de datos
 		$("#form_registros_categoria").show(); //muetra el formulario de registro
 		$("#btn_save_categoria").prop("disabled",false); //oculta o deshabilita el boton de agregar que aparece en el listado tabla
+		$("#btn_agregar").hide();
 	}else{
 		$("#listado_registros_categoria").show(); //sino muestra la tabla de listado de categorias
 		$("#form_registros_categoria").hide(); //oculta el formulario de registro de categorias
+		$("#btn_agregar").show();
 	}
 }
 
