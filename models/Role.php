@@ -50,7 +50,7 @@
 		}
 
 		public function listarRoles(){
-			$sql = "SELECT IDRole,Nombre FROM role ORDER BY Nombre";
+			$sql = "SELECT IDRole,Nombre,Estado FROM role WHERE Estado='1' ORDER BY Nombre";
 			return ejecutarConsulta($sql);
 		}
 	}

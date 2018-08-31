@@ -44,9 +44,12 @@
 		}
 
 		public function showAll(){
-			$sql = "SELECT c.IDCliente,c.Nombre,c.TipoDocumento,c.NumeroDocumento,c.Telefono,
+			/*$sql = "SELECT c.IDCliente,c.Nombre,c.TipoDocumento,c.NumeroDocumento,c.Telefono,
 			c.Correo,c.Direccion,c.updated_by,c.updated_at,u.IDUsuario,u.NombreUsuario 
 			FROM cliente c INNER JOIN usuario u ON c.updated_by=u.IDUsuario";
+			*/
+			$sql = "SELECT IDCliente,Nombre,TipoDocumento,NumeroDocumento,Telefono,
+			Correo,Direccion,Estado,updated_at FROM cliente";
 			return ejecutarConsulta($sql);
 		}
 	}

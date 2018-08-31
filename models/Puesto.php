@@ -50,7 +50,7 @@
 		}
 
 		public function listarPuestos(){
-			$sql = "SELECT IDPuesto,Nombre FROM puesto ORDER BY Nombre";
+			$sql = "SELECT IDPuesto,Nombre,Estado FROM puesto WHERE Estado='1' ORDER BY Nombre";
 			return ejecutarConsulta($sql);
 		}
 	}

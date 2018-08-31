@@ -45,7 +45,7 @@ require 'header.php';
                         </tfoot>
                       </table>
                     </div>
-                    <div class="panel-body" style="height: 400px;" id="form_registros">
+                    <div class="panel-body" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
                           <strong><i class="fa fa-edit"></i> Agregar nuevo Deapartamento</strong>
@@ -56,15 +56,9 @@ require 'header.php';
                             <div class="form-horizontal col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <div class="form-group">
                                 <label for="nombre">Nombre de Departamento</label>
-                                <!-- <input type="hidden" name="id_categoria" id="id_categoria"> -->
                                 <input type="text" name="id_departamento" id="id_departamento" style="display: none;">
                                 <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre de departamento" required>
                               </div>
-
-<!--                               <div class="form-group">
-                                <label for="detalle">Detalle</label>
-                                <input type="text" class="form-control" name="detalle" id="detalle" maxlength="100" placeholder="Detalle importante" required>
-                              </div> -->
 
                               <div class="form-group">
                                 <label for="id_user">ID User</label>

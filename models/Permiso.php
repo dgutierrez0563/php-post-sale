@@ -6,7 +6,7 @@
 	*/
 	require "../config/Conexion.php";
 	/**
-	* Class for Puesto
+	* Class for Permiso
 	*/
 	class Permiso
 	{
@@ -49,9 +49,15 @@
 			return ejecutarConsulta($sql);
 		}
 
-		public function listarPuestos(){
-			$sql = "SELECT IDPermiso,Nombre FROM permiso ORDER BY Nombre";
+		public function listarPermisos(){
+			$sql = "SELECT IDPermiso,Nombre,Estado FROM permiso WHERE Estado='1' ORDER BY Nombre";
 			return ejecutarConsulta($sql);
 		}
+
+		public function listarPermisoJson(){
+			$sql = "SELECT Nombre,Estado FROM permiso WHERE Estado='1' ORDER BY Nombre";
+			return ejecutarConsulta($sql);
+		}
+
 	}
 ?>

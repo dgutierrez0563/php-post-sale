@@ -2,8 +2,6 @@
 	ESTE NO SE USA SE DEBE USAR EL articulo1.js
 */
 
-
-
 var tabla;
 
 function init(){

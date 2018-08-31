@@ -30,16 +30,6 @@
 		}
 
 		public function disable($id_categoria/*,$id_user*/){
-			/*$sql_aux = "SELECT IDCategoria,Estado FROM categoria WHERE IDCategoria='$id'";
-			if ($id==1) {
-				$status=0;
-				$sql = "UPDATE categoria SET Estado='$status' WHERE IDCategoria='$id'";
-			}else{
-				$status=1;
-				$sql = "UPDATE categoria SET Estado='$status' WHERE IDCategoria='$id'";
-			}
-			*/
-			//$sql = "UPDATE categoria SET Estado='0',updated_by='$id_user' WHERE IDCategoria='$id_categoria'";
 			$sql = "UPDATE categoria SET Estado='0' WHERE IDCategoria='$id_categoria'";
 			return ejecutarConsulta($sql);
 		}

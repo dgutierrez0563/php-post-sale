@@ -47,7 +47,7 @@ require 'header.php';
                         </tfoot>
                       </table>
                     </div>
-                    <div class="panel-body" style="height: 450px;" id="form_registros_categoria">
+                    <div class="panel-body" id="form_registros_categoria">
                       <div class="panel panel-info">
                         <div class="panel-heading">
                           <strong><i class="fa fa-edit"></i> Agregar nueva categoria</strong>
@@ -58,7 +58,6 @@ require 'header.php';
                             <div class="form-horizontal col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <div class="form-group">
                                 <label for="nombre">Nombre de Categoria</label>
-                                <!-- <input type="hidden" name="id_categoria" id="id_categoria"> -->
                                 <input type="text" name="id_categoria" id="id_categoria" style="display: none;">
                                 <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre de categoria" required>
                               </div>

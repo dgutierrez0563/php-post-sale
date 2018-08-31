@@ -17,8 +17,6 @@ require 'header.php';
                           </li>
                           <li class="breadcrumb-item active"><strong> Inventario</li></strong>
                         </ol>
-<!--                         <button class="btn btn-success pull-right" onclick="mostrarForm_inventario(true)">
-                          <i class="fa fa-plus-circle"></i>  Agregar Stock</button> -->
                       </div>
                     </div>
 
@@ -45,15 +43,14 @@ require 'header.php';
                         </tfoot>
                       </table>
                     </div>
-                    <div class="panel-body" style="height: 430px;" id="form_registros">
+                    <div class="panel-body" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
                           <strong><i class="fa fa-edit"></i> Agregar Stock a Productos</strong>
                         </div>
                         <div class="panel-body">
                           <br>
-                          <form id="form_create_update" name="form_create_update" method="POST">                        
-                            <!-- <div class="form-horizontal col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
+                          <form id="form_create_update" name="form_create_update" method="POST">
                               
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="codigo">Codigo</label>
@@ -62,7 +59,6 @@ require 'header.php';
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="nombre">Nombre de articulo</label>
-                                <!-- <input type="hidden" name="id_categoria" id="id_categoria"> -->
                                 <input type="text" name="id_articulo" id="id_articulo" style="display: none;">
                                 <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre de articulo" readonly>
                               </div>

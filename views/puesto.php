@@ -45,7 +45,7 @@
                         </tfoot>
                       </table>
                     </div>
-                    <div class="panel-body" style="height: 330px;" id="form_registros">
+                    <div class="panel-body" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
                           <strong><i class="fa fa-edit"></i> Agregar Puesto</strong>
@@ -62,8 +62,7 @@
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="id_departamento">Departamento</label>
-                                <select class="form-control selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>
-                                  
+                                <select class="form-control selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>                                  
                                 </select>
                               </div>
 

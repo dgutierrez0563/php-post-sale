@@ -26,6 +26,9 @@
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+    
+
   </head>
   <body class="hold-transition skin-red sidebar-mini">
     <div class="wrapper">
@@ -150,9 +153,10 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Asignacion de Accesos</a></li>
                 <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
                 <li><a href="role.php"><i class="fa fa-circle-o"></i> Roles</a></li>
+                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
               </ul>
             </li>
             <li class="treeview">

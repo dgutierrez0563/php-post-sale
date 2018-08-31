@@ -82,8 +82,8 @@
 			while ($item=$response->fetch_object()) {
 				$data[]=array(
 					'0'=>$item->Nombre,
-					'1'=>$item->TipoDocumento,
-					'2'=>$item->NumeroDocumento,
+					'1'=>$item->NumeroDocumento,
+					'2'=>$item->TipoDocumento,
 					'3'=>$item->Telefono,
 					'4'=>$item->Correo,
 					'5'=>$item->Direccion,

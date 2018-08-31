@@ -14,7 +14,7 @@
 		case 'save_edit':
 			
 			if (empty($id_permiso)) {
-				$response = $permiso->create($nombre,$id_user);
+				$response = $permiso->create($nombre,$detalle,$id_user);
 				
 				echo $response ? "<div class='alert alert-info alert-dismissable'>
 									<i class='icon fa fa-check-circle'></i>Success! Datos registrados satisfactoriamente
@@ -64,8 +64,8 @@
 				$data[]=array(
 					'0'=>$item->Nombre,
 					'1'=>$item->Detalle,
-					'2'=>$item->NombreUsuario,
-					'3'=>($item->Estado) ? '<div class="center"><span class="label bg-green">Enabled</span>' : '<span class="label bg-orange">Disabled</span></div>',
+					'2'=>($item->Estado) ? '<div class="center"><span class="label bg-green">Enabled</span>' : '<span class="label bg-orange">Disabled</span></div>',
+					'3'=>$item->NombreUsuario,
 					'4'=>$item->updated_at,
 					'5'=>($item->Estado) ? 
 						'<button class="btn btn-primary btn-xs" onclick="mostrar('.$item->IDPermiso.')"><i class="fa fa-pencil"></i></button>' . ' <button class="btn btn-warning btn-xs" onclick="disable('.$item->IDPermiso.')"><i class="fa fa-power-off"></i>
@@ -83,6 +83,19 @@
 				'aaData'=>$data
 			);
 			echo json_encode($results);
+			break;
+
+		case 'listarPermisos': //caso para listar las caategorias del select
+
+			require_once "../models/Permiso.php";
+
+			$permiso = new Permiso();
+			$response = $permiso->listarPermisos();
+
+			while ($item = $response->fetch_object()) {
+				echo '<option value=' .$item->IDPermiso . '>' . $item->Nombre . '</option>';				
+			}
+			
 			break;
 
 		default:			

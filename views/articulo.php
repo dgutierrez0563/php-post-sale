@@ -59,8 +59,7 @@
                         </div>
                         <div class="panel-body">
                           
-                          <form id="form_create_update" name="form_create_update" method="POST">                        
-                            <!-- <div class="form-horizontal col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
+                          <form id="form_create_update" name="form_create_update" method="POST">
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="nombre">Nombre de articulo</label>
@@ -70,8 +69,7 @@
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="categoria">Categoria</label>
-                                <select class="form-control selectpicker" data-live-search="true" name="id_categoria" id="id_categoria" required>
-                                  
+                                <select class="form-control selectpicker" data-live-search="true" name="id_categoria" id="id_categoria" required>                                  
                                 </select>
                               </div>
 
@@ -107,7 +105,6 @@
                                 <div id="id_print">
                                   <svg id="bar_code"></svg>
                                 </div>
-
                               </div>
 
                               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

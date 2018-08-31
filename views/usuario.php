@@ -60,7 +60,7 @@ require 'header.php';
                         </tfoot>
                       </table>
                     </div>
-                    <div class="panel-body" style="height: 620px;" id="form_registros">
+                    <div class="panel-body" id="form_registros">
                       <div class="panel panel-info">
                         <div class="panel-heading">
                           <strong><i class="fa fa-edit"></i> Agregar Usuario</strong>
